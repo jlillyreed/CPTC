@@ -1,0 +1,3 @@
+name = CPTC Scoring
+description = Custom scoring component for cptc.reveregroup.com
+core = 7.x

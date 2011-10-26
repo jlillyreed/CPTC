@@ -1,0 +1,46 @@
+<?php
+include('cptc_series.inc');
+
+function cptc_scoring_permission(){
+  return array(
+    'access captain functions' => array(
+      'title' => 'Access Captain Functions',
+      'description' => 'Functions that only captains have access to'
+    ),
+  );
+}
+
+/* 
+function cptc_scoring_perm(){
+  return array('access captain functions');
+}
+*/
+
+function cptc_scoring_menu(){
+  
+  $items['team/%/captain/score/%'] = array(
+    'title' => 'Score Entry Page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cptc_scoring_score_entry_form', 1, 4),
+    'access callback' => 'user_access',
+    'access arguments' => array('access captain functions'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+
+}
+
+function cptc_scoring_init(){
+  
+}
+
+function cptc_scoring_cron(){
+  
+}
+
+
+function cptc_scoring_score_entry_form($form, $form_state, $teamnumber, $gameid){
+  $form['test'] = array('#type'=>'markup', '#value'=>'hello world');
+  return $form;
+}
